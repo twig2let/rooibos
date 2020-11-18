@@ -28,15 +28,15 @@
 </nav>
 
 <div id="main">
-    
+
     <h1 class="page-title">CommonUtils.brs</h1>
-    
-
-    
 
 
 
-    
+
+
+
+
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>' /**
@@ -336,23 +336,38 @@ function Rooibos_Common_asString(input) as string
         return input
     else if Rooibos_Common_isInteger(input) or Rooibos_Common_isLongInteger(input) or Rooibos_Common_isBoolean(input) then
         return input.ToStr()
-    else if Rooibos_Common_isFloat(input) or Rooibos_Common_isDouble(input) then
+    else if Rooibos_Common_isFloat(input) then
+        if Instr(1, Str(input), ".") = 0
+            return Str(input).Trim() + ".0"
+        end if
+        return Str(input).Trim()
+    else if Rooibos_Common_isDouble(input) then
         return Str(input).Trim()
     else if type(input) = "roSGNode" then
         return "Node(" + input.subType() + ")"
     else if type(input) = "roAssociativeArray" then
-        isFirst = true
         text = "{"
-        if (not isFirst) then
-            text = text + ","
-            isFirst = false
-        end if
-        for each key in input
-            if key &lt;> "__mocks" and key &lt;> "__stubs" then
-                text = text + key + ":" + Rooibos_Common_asString(input[key])
+        inputKeys = input.keys()
+        for i = 0 to inputKeys.count() - 1
+            key = inputKeys[i]
+            if key <> "__mocks" AND key <> "__stubs" then
+                text += key + ":" + Rooibos_Common_asString(input[key])
+                if i < inputKeys.count() - 1
+                    text += ", "
+                end if
             end if
         end for
-        text = text + "}"
+        text += "}"
+        return text
+    else if Rooibos_Common_isArray(input) then
+        text = "["
+        for i = 0 to input.count() - 1
+            text += Rooibos_Common_asString(input[i])
+            if i < input.count() - 1
+                text += ", "
+            end if
+        end for
+        text += "]"
         return text
     else if Rooibos_Common_isFunction(input) then
         return input.toStr()
