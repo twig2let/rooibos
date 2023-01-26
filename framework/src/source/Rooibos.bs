@@ -26,6 +26,7 @@ namespace rooibos
       ? "scene is ready; running tests now"
       runner = new rooibos.TestRunner(scene, m)
       runner.Run()
+      return
     end if
 
     while true
