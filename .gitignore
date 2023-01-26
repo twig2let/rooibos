@@ -3,7 +3,7 @@ build
 .env
 
 ###BrightScript specific
-dist/apps
+# dist/apps
 out/
 
 #Rooibos generated
@@ -51,4 +51,4 @@ package-lock.json
 
 !.vscode
 .vscode/.env
-dist/
+# dist/
