@@ -1,6 +1,7 @@
 {
-  "name": "rooibos",
-  "description": "simple, flexible, fun brightscript test framework for roku scenegraph apps",
+  "name": "@sky-uk/sky-rooibos",
+  "version": "1.0.0",
+  "description": "A fork of the Roku TDD library, Rooibos.",
   "files": [
     "dist/**/!(manifest)*"
   ],
@@ -11,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/georgejecook/rooibos.git"
+    "url": "https://github.com/sky-uk/sky-rooibos"
   },
   "keywords": [
     "ropm",
@@ -21,16 +22,16 @@
     "rooibos",
     "tdd"
   ],
-  "author": "George Cook",
-  "license": "MIT",
+  "author": "George Cook + Sky UK",
+  "license": "BSD-3-Clause",
   "bugs": {
-    "url": "https://github.com/georgejecook/rooibos/issues"
+    "url": "https://github.com/sky-uk/sky-rooibos/issues"
   },
   "ropm": {
     "rootDir": "src",
     "packageRootDir": "dist"
   },
-  "homepage": "https://github.com/georgejecook/rooibos#readme",
+  "homepage": "https://github.com/sky-uk/sky-rooibos#readme",
   "scripts": {
     "build": "npx bsc",
     "test": "npx bsc --project ./bsconfig-tests.json"
