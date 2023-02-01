@@ -1,6 +1,7 @@
 .DS_Store
 build
 .env
+.npmrc
 
 ###BrightScript specific
 dist/apps
